@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const app = express();
 const hostname = process.env.HOSTNAME || "127.0.0.1";
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const USERS_LIST =
   process.env.USERS_LIST || "https://jsonplaceholder.typicode.com/users";
