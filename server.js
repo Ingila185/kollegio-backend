@@ -2,13 +2,18 @@ const { createServer } = require("node:http");
 const express = require("express");
 const axios = require("axios"); // Import axios for making HTTP requests
 const mongoose = require("mongoose"); // Import mongoose for MongoDB interactions
+require("dotenv").config();
+
 const app = express();
-const hostname = "127.0.0.1";
-const port = 3000;
+const hostname = process.env.HOSTNAME || "127.0.0.1";
+const port = process.env.PORT || 3000;
 
-const USERS_LIST = "https://jsonplaceholder.typicode.com/users";
+const USERS_LIST =
+  process.env.USERS_LIST || "https://jsonplaceholder.typicode.com/users";
 
-mongoose.connect("mongodb://localhost:27017/kollegio");
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/kollegio"
+);
 
 const RequestLogSchema = new mongoose.Schema({
   timestamp: String,
